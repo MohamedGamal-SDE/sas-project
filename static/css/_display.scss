@@ -1,0 +1,62 @@
+@use 'variables' as v;
+
+// Additional browsers style reset
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+input,
+button {
+  outline: none;
+  border: none;
+  background-image: none;
+  background-color: transparent;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+}
+
+a,
+li {
+  list-style: none;
+  text-decoration: none;
+}
+
+// General display setup
+html {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+a {
+  color: v.$wit;
+}
+
+// MAin App Background
+body {
+  min-height: 100vh;
+  background: linear-gradient(
+    110deg,
+    rgba(v.$bgSec, 1) 35%,
+    rgba(v.$bgMain, 1) 65%
+  );
+  width: 100%;
+}
+
+// Top Colored line
+.top-line {
+  height: 0.2rem;
+  width: 100%;
+  background: linear-gradient(
+      90deg,
+      rgba(v.$blu, 1) 20%,
+      rgba(v.$orange, 0) 40%
+    ),
+    linear-gradient(110deg, rgba(v.$orange, 1) 65%, rgba(v.$ylw, 1) 80%);
+}
