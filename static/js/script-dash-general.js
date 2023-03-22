@@ -102,6 +102,14 @@ class Record extends Records {
     );
   }
 
+  axiosConfig() {
+    return {
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    };
+  }
+
   buildRecord() {
     let record = {
       id: this.uniqueId(),
@@ -132,6 +140,30 @@ class Record extends Records {
     } catch (error) {
       // === DEV-ONLY ===
       console.log('Error...', error);
+    }
+  }
+
+  async updateRecord(targetId, name, idea, event) {
+    await this.buildRecords();
+
+    const target = this.list.find((record) => record.id === targetId);
+    const updatedRecord = {
+      ...target,
+      name,
+      idea,
+    };
+
+    try {
+      await axios.put(
+        `${baseApiURL}/${targetId}`,
+        updatedRecord,
+        this.axiosConfig()
+      );
+
+      // ReBuild Record List
+      this.buildRecords();
+    } catch (error) {
+      console.error(error);
     }
   }
 }

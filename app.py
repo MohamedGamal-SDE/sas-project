@@ -194,7 +194,7 @@ def get_all():
 # ------------------------------------- #
 # # Read "GET" get single record functionality:
 # ------------------------------------- #
-@app.route('/api/v1/<int:incoming_id>', methods=["GET"])
+@app.route('/api/v1/<incoming_id>', methods=["GET"])
 def get_one(incoming_id):
 
     records = read_records()
@@ -219,7 +219,7 @@ def rebuild_records(new_record):
         db_file.write(f"{json.dumps(new_record)} \n")
 
 
-@app.route('/api/v1/<int:incoming_id>', methods=['PUT'])
+@app.route('/api/v1/<incoming_id>', methods=['PUT'])
 def update_record(incoming_id):
     # Check guard : JSON data only
     # is_json()
@@ -253,7 +253,7 @@ def update_record(incoming_id):
 # ===================================== #
 # # DELETE record (DELETE) functionality:
 # ===================================== #
-@app.route('/api/v1/<int:incoming_id>', methods=["DELETE"])
+@app.route('/api/v1/<incoming_id>', methods=["DELETE"])
 def del_record(incoming_id):
     # Check guard : JSON data only
     # is_json()
