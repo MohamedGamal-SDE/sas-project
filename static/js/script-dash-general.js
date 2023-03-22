@@ -136,7 +136,7 @@ class Record extends Records {
       await axios.post(baseApiURL, JSON.stringify(newRecord), config);
 
       // ReBuild Record List
-      this.buildRecords();
+      await this.buildRecords();
     } catch (error) {
       // === DEV-ONLY ===
       console.log('Error...', error);
@@ -161,9 +161,22 @@ class Record extends Records {
       );
 
       // ReBuild Record List
-      this.buildRecords();
+      await this.buildRecords();
     } catch (error) {
-      console.error(error);
+      // === DEV-ONLY ===
+      console.log('Error...', error);
+    }
+  }
+
+  async deleteRecord(targetId, event) {
+    try {
+      await axios.delete(`${baseApiURL}/${targetId}`, this.axiosConfig());
+
+      // ReBuild Record List
+      await this.buildRecords();
+    } catch (error) {
+      // === DEV-ONLY ===
+      console.log('Error...', error);
     }
   }
 }

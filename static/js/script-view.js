@@ -1,9 +1,9 @@
 //  // View Requests References and general setup
 const viewAllGrid = document.getElementById('view-all-grid');
 
-let requests = new Records();
+const requests = new Records();
 // Get requests list from API
-// let list = await requests.buildRecords();
+// const list = await requests.buildRecords();
 
 // localStorage List
 const storedList = JSON.parse(localStorage.getItem('records'));
@@ -43,12 +43,11 @@ function handleUpdateRequest(event) {
   event.preventDefault();
 
   const targetId = event.target.getAttribute('data-id');
-  let targetRef = document.getElementById(targetId);
-  let nameRef = targetRef.querySelector('.card-inner-title');
-  let ideaRef = targetRef.querySelector('.card-inner-content');
-  let editBtnRef = targetRef.querySelector('.fa-pen-to-square');
-  let saveBtnRef = targetRef.querySelector('.fa-paper-plane');
-  let saveAlert = targetRef.querySelector('.card-inner-alert');
+  const targetRef = document.getElementById(targetId);
+  const nameRef = targetRef.querySelector('.card-inner-title');
+  const ideaRef = targetRef.querySelector('.card-inner-content');
+  const editBtnRef = targetRef.querySelector('.fa-pen-to-square');
+  const saveBtnRef = targetRef.querySelector('.fa-paper-plane');
 
   nameRef.contentEditable = 'true';
   nameRef.classList.add('content-editable');
@@ -66,12 +65,12 @@ function handleSaveRequest(event) {
   event.preventDefault();
 
   const targetId = event.target.getAttribute('data-id');
-  let targetRef = document.getElementById(targetId);
-  let nameRef = targetRef.querySelector('.card-inner-title');
-  let ideaRef = targetRef.querySelector('.card-inner-content');
-  let editBtnRef = targetRef.querySelector('.fa-pen-to-square');
-  let saveBtnRef = targetRef.querySelector('.fa-paper-plane');
-  let saveAlert = targetRef.querySelector('.card-inner-alert');
+  const targetRef = document.getElementById(targetId);
+  const nameRef = targetRef.querySelector('.card-inner-title');
+  const ideaRef = targetRef.querySelector('.card-inner-content');
+  const editBtnRef = targetRef.querySelector('.fa-pen-to-square');
+  const saveBtnRef = targetRef.querySelector('.fa-paper-plane');
+  const saveAlert = targetRef.querySelector('.card-inner-alert');
 
   if (
     nameRef.innerText.trim().length === 0 ||
@@ -83,7 +82,7 @@ function handleSaveRequest(event) {
   }
 
   // Call Update Record
-  let updateTarget = new Record();
+  const updateTarget = new Record();
   updateTarget.updateRecord(
     targetId,
     nameRef.innerText.trim(),
@@ -103,6 +102,21 @@ function handleSaveRequest(event) {
   saveAlert.innerText = '';
 }
 
+async function handleDeleteRequest(event) {
+  event.preventDefault();
+
+  const targetId = event.target.getAttribute('data-id');
+
+  // storedList.filter((rec) => rec.id !== targetId);
+
+  // Call new Record - delete method
+  const target = new Record();
+  await target.deleteRecord(targetId);
+
+  // Redirect to Dashboard
+  window.location = `${baseURL}/view`;
+}
+
 // Register View-Edit Request Global EventListener
 document.addEventListener('click', (event) => {
   if (event.target.classList.contains('fa-pen-to-square')) {
@@ -110,5 +124,8 @@ document.addEventListener('click', (event) => {
   }
   if (event.target.classList.contains('fa-paper-plane')) {
     handleSaveRequest(event);
+  }
+  if (event.target.classList.contains('fa-trash')) {
+    handleDeleteRequest(event);
   }
 });
