@@ -481,4 +481,23 @@ body {
   align-self: flex-start;
   font-size: 1rem;
   color: #fff;
+}
+
+.dash-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem auto 0;
+}
+.dash-nav .dash-nav-btn a {
+  background-color: #fe5945;
+  padding: 0.8rem 0.5rem;
+  font-weight: 600;
+  color: #fff;
+}
+.dash-nav .dash-nav-btn a:hover {
+  background-color: #fff;
+  color: #fe5945;
 }/*# sourceMappingURL=style.css.map */

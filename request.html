@@ -25,7 +25,7 @@
       type="image/x-icon"
     />
     <link rel="stylesheet" href="static/css/style.css" />
-    <title>Dashboard</title>
+    <title>Request Build</title>
   </head>
   <body>
     <!-- Shared Header - START -->
@@ -45,8 +45,47 @@
       </ul>
     </nav>
     <!-- Dashboard NAV - END-->
-
     <!-- <div id="dashboard"></div> -->
+
+    <!-- Request Build - START -->
+    <div class="form" id="req-build-form">
+      <div class="form-wrapper">
+        <input
+          type="text"
+          name="name"
+          id="req-build-name"
+          value=""
+          placeholder="Enter app name"
+          autofocus
+          required
+        />
+
+        <textarea
+          type="text"
+          name="name"
+          id="req-build-idea"
+          value=""
+          placeholder="Enter app idea"
+          rows="10"
+          required
+        ></textarea>
+
+        <input
+          type="url"
+          name="url"
+          id="req-build-url"
+          value=""
+          placeholder="http://app-image-url.com"
+          pattern="http://.*"
+          required
+        />
+
+        <input type="submit" name="add" id="req-build-btn" value="Submit" />
+
+        <div id="from-alert"></div>
+      </div>
+    </div>
+    <!-- Request Build - END -->
 
     <script src="static/js/main.js"></script>
   </body>

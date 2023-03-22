@@ -36,12 +36,8 @@ def get_javascript(file_name):
 # ## Helper function to fetch javascript files
 def get_js_general():
     get_javascript("main")
-    get_javascript("dash-content")
-    get_javascript("dash-login")
-
-
-def get_js_dash():
-    get_javascript("dash")
+    get_javascript("header")
+    get_javascript("hero")
 
 # ===================================== #
 # # Main Routes
@@ -62,9 +58,36 @@ def dashboard_route():
     html = get_html("dashboard")
     get_css("style")
     get_js_general()
-    get_js_dash()
 
     return html
+
+
+@app.route('/login')
+def login_route():
+    html = get_html("login")
+    get_css("style")
+    get_js_general()
+
+    return html
+
+
+@app.route('/request')
+def request_route():
+    html = get_html("request")
+    get_css("style")
+    get_js_general()
+
+    return html
+
+
+@app.route('/view')
+def view_route():
+    html = get_html("view")
+    get_css("style")
+    get_js_general()
+
+    return html
+
 
 # API setup:
 # ===================================== #

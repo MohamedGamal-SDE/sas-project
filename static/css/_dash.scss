@@ -1,0 +1,24 @@
+@use 'variables' as v;
+
+// ==== Dashboard CP ====
+// Dashboard Nav
+.dash-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem auto 0;
+
+  .dash-nav-btn a {
+    background-color: v.$orange;
+    padding: 0.8rem 0.5rem;
+    font-weight: 600;
+    color: v.$wit;
+
+    &:hover {
+      background-color: v.$wit;
+      color: v.$orange;
+    }
+  }
+}

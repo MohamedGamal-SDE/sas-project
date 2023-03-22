@@ -4,11 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="static/images/favicon.ico"
-      type="image/x-icon"
-    />
     <!-- External libraries - START -->
     <link
       rel="stylesheet"
@@ -24,8 +19,13 @@
       referrerpolicy="no-referrer"
     ></script>
     <!-- External libraries - END -->
+    <link
+      rel="shortcut icon"
+      href="static/images/favicon.ico"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="static/css/style.css" />
-    <title>SAS - Your IDEA to APP in a blink</title>
+    <title>View all Requests</title>
   </head>
   <body>
     <!-- Shared Header - START -->
@@ -33,32 +33,21 @@
     <script src="/static/js/header.js"></script>
     <!-- Shared Header - END -->
 
-    <!-- Main-Body -->
-    <div class="body-wrap">
-      <!-- HeroSection - START -->
-      <section class="hero-section" id="hero">
-        <div class="hero-section-img">
-          <img src="./static/images/hero-img.svg" alt="" />
-        </div>
-        <div class="hero-section-content">
-          <div class="hero-section-content--text">
-            <h1>Simple App Studio (SAS)</h1>
-            <h2>You think it we build it ...</h2>
-            <p>
-              With SAS the only thing stopping you is your imaginations, we make
-              your App idea come to life, all you have to do is share your idea
-              and sketch and wait for the magic to happens.
-            </p>
-          </div>
-          <div class="hero-section-content--cta" id="switch-hero"></div>
-          <script src="/static/js/hero.js"></script>
-        </div>
-      </section>
-      <!-- HeroSection - END -->
+    <!-- Dashboard NAV - Start -->
+    <nav>
+      <ul class="dash-nav">
+        <li class="dash-nav-btn" id="req-build">
+          <a href="/request">Request App Build</a>
+        </li>
+        <li class="dash-nav-btn" id="view-requests">
+          <a href="/view">View all Requests</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- Dashboard NAV - END-->
 
-      <!-- Services -->
-      <div id="services"></div>
-    </div>
+    <div class="view-all"><ul class="view-all-wrap" id="view-all-ul"></ul></div>
+
     <script src="static/js/main.js"></script>
   </body>
 </html>
