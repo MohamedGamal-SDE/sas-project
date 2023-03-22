@@ -22,3 +22,164 @@
     }
   }
 }
+
+// Loader Spinner
+#loader {
+  border: 12px solid v.$ylw;
+  border-radius: 50%;
+  border-top: 12px solid v.$wit;
+  width: 70px;
+  height: 70px;
+  animation: spin 1s linear infinite;
+
+  &-center {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* CARD LISTING STYLES */
+.grid-list {
+  &--wrap {
+    user-select: none;
+    display: grid;
+    padding: 2.5rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+
+    // @media (min-width: v.$med) {
+    //   grid-template-columns: repeat(2, minmax(0, 1fr));
+    // }
+
+    @media (min-width: v.$large) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (min-width: v.$xlarge) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}
+
+.card {
+  &-outer {
+    display: flex;
+    flex-direction: column;
+    // border-radius: 0.5rem;
+    border: v.$bgMain 2px solid;
+    /* Scale animation */
+    transition: all 0.4s ease-in-out;
+    box-shadow: 2px 2px 5px 0px v.$brdDrk;
+
+    &:hover {
+      // transform: scale(0.9);
+
+      @media (min-width: v.$med) {
+        transform: scale(0.95);
+      }
+
+      @media (min-width: v.$large) {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &-inner {
+    padding: 1.25rem;
+
+    &-title {
+      margin-bottom: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+
+      /* truncate */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      /* truncate */
+    }
+
+    &-content {
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+
+      /* truncate */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      /* truncate */
+    }
+
+    &-alert {
+      width: 100%;
+      border-bottom: 4px solid v.$ylw;
+      color: v.$orange;
+      padding: 0.5rem;
+    }
+  }
+
+  &-footer {
+    font-weight: 300;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &--icons {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.25rem;
+      color: v.$bgGray;
+    }
+
+    &--btn {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      // gap: 0.5rem;
+      font-size: 1.25rem;
+    }
+
+    &--btnEdit,
+    &--btnDel,
+    &--btnSave {
+      cursor: pointer;
+    }
+
+    &--btnEdit {
+      color: v.$wit;
+    }
+
+    &--btnDel {
+      color: v.$orange;
+      padding-left: 0.5rem;
+    }
+
+    &--btnSave {
+      color: v.$ylw_d;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
+.show {
+  display: block;
+}
+
+.content-editable {
+  color: v.$wit;
+  border-bottom: 2px dashed v.$ylw;
+}
