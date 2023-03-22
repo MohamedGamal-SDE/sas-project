@@ -70,7 +70,6 @@
   &:not(.cta-btn--top)a:hover,
   .item a:hover::after {
     color: v.$bgGray;
-    // background-color: lighten(v.$bgMain, 1);
   }
 
   // PC Edition (NAV-LINKS)

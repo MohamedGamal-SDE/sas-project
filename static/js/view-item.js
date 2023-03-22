@@ -6,7 +6,7 @@ const addListItem = (request) => {
         <div class="card-outer">
           <img src="${url}" alt="${name}" />
 
-          <div class="card-inner">
+          <div class="card-inner stretch">
             <h2 class="card-inner-title">${name}</h2>
             <p class="card-inner-content">${idea}</p>
             <div class="card-inner-alert hidden"></div>

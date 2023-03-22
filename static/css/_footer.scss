@@ -45,3 +45,11 @@
     }
   }
 }
+
+// Footer push down hacky solution
+.dash-full {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 80vh;
+}

@@ -15,10 +15,10 @@
     font-size: 3rem;
     font-weight: 700;
     color: v.$ylw_d;
-    //   @media (min-width: v.$med) {
-    //     font-size:4rem;
-    //     font-weight: 700;
-    //   }
+
+    @media (min-width: v.$med) {
+      font-size: 4rem;
+    }
   }
 
   &-p {
@@ -93,6 +93,10 @@
     // Add margin to the bottom of each card except for last one
     &:not(:last-child) {
       margin-bottom: 1.25rem;
+
+      @media (min-width: v.$large) {
+        margin-bottom: 0;
+      }
     }
   } // Card main - (end)
 }

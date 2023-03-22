@@ -10,7 +10,6 @@ const isDashboard = () => {
     currentLocation === '/dashboard' ||
     currentLocation === '/request' ||
     currentLocation === '/view'
-    // || currentLocation === '/update'
   ) {
     return true;
   } else {
@@ -25,7 +24,6 @@ const isDashboard = () => {
 // ======== Requests List factory (Class) - (s)========
 class Records {
   constructor() {
-    // this.list = this.buildRecords() || [];
     this.list = [];
     this.buildRecords();
   }
@@ -53,8 +51,7 @@ class Records {
       const records = response.data.result;
       return records;
     } catch (error) {
-      // === DEV-ONLY ===
-      console.log('Error...', error);
+      errorBlockMsg(error.message);
     }
   }
 
@@ -93,6 +90,10 @@ class Record extends Records {
   }
 
   // Unique Random ID generator Utils
+  // ___________________________________________
+  // NOTE: This code is not originally written by me
+  // Its originally from (stack overflow) site
+  // ___________________________________________
   uniqueId() {
     return (
       Date.now().toString(36) +
@@ -102,6 +103,7 @@ class Record extends Records {
     );
   }
 
+  // Set Axios shared Header Setup
   axiosConfig() {
     return {
       headers: {
@@ -110,6 +112,7 @@ class Record extends Records {
     };
   }
 
+  // Build New Record
   buildRecord() {
     let record = {
       id: this.uniqueId(),
@@ -138,8 +141,7 @@ class Record extends Records {
       // ReBuild Record List
       await this.buildRecords();
     } catch (error) {
-      // === DEV-ONLY ===
-      console.log('Error...', error);
+      errorBlockMsg(error.message);
     }
   }
 
@@ -163,8 +165,7 @@ class Record extends Records {
       // ReBuild Record List
       await this.buildRecords();
     } catch (error) {
-      // === DEV-ONLY ===
-      console.log('Error...', error);
+      errorBlockMsg(error.message);
     }
   }
 
@@ -175,8 +176,7 @@ class Record extends Records {
       // ReBuild Record List
       await this.buildRecords();
     } catch (error) {
-      // === DEV-ONLY ===
-      console.log('Error...', error);
+      errorBlockMsg(error.message);
     }
   }
 }

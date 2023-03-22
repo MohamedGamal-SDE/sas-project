@@ -51,15 +51,10 @@
 /* CARD LISTING STYLES */
 .grid-list {
   &--wrap {
-    user-select: none;
     display: grid;
     padding: 2.5rem;
     grid-template-columns: repeat(1, minmax(0, 1fr));
-    gap: 1rem;
-
-    // @media (min-width: v.$med) {
-    //   grid-template-columns: repeat(2, minmax(0, 1fr));
-    // }
+    gap: 1.25rem;
 
     @media (min-width: v.$large) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -75,14 +70,17 @@
   &-outer {
     display: flex;
     flex-direction: column;
-    // border-radius: 0.5rem;
+    border-radius: 0.5rem;
     border: v.$bgMain 2px solid;
-    /* Scale animation */
     transition: all 0.4s ease-in-out;
-    box-shadow: 2px 2px 5px 0px v.$brdDrk;
+    box-shadow: 2px 2px 5px 0 rgba(v.$wit, 0.2);
+
+    img {
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
 
     &:hover {
-      // transform: scale(0.9);
+      transform: scale(0.98);
 
       @media (min-width: v.$med) {
         transform: scale(0.95);
@@ -101,23 +99,19 @@
       margin-bottom: 1.25rem;
       font-weight: 700;
       letter-spacing: -0.025em;
-
-      /* truncate */
+      // truncate Settings
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      /* truncate */
     }
 
     &-content {
       margin-bottom: 1.5rem;
       font-weight: 400;
-
-      /* truncate */
+      // truncate Settings
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      /* truncate */
     }
 
     &-alert {
@@ -139,6 +133,7 @@
       display: flex;
       flex-direction: row;
       align-items: center;
+      font-size: 1.125rem;
       gap: 0.25rem;
       color: v.$bgGray;
     }
@@ -147,7 +142,6 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      // gap: 0.5rem;
       font-size: 1.25rem;
     }
 
@@ -172,14 +166,9 @@
   }
 }
 
-.hidden {
-  display: none;
-}
-.show {
-  display: block;
-}
-
+// View Request Card Update
 .content-editable {
   color: v.$wit;
   border-bottom: 2px dashed v.$ylw;
+  padding: 0.5rem;
 }
