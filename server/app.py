@@ -1,6 +1,6 @@
 # Initial Setup
 import json
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, make_response
 
 app = Flask(__name__)
 db_path = 'db/db.txt'
@@ -45,21 +45,56 @@ def create_record():
 
 
 # ===================================== #
+# ## Handle Record NOT found as JSON
+#    not as default flask HTML response
+# ===================================== #
+
+def is_json():
+    # Check guard : JSON data only
+    # Cancel request and send BAD request error
+    if not request.json:
+        abort(400)
+
+
+def target_not_found(target):
+    # Check guard : not found (404)
+    # Cancel request and send 404 error
+    if len(target) == 0:
+        abort(404)
+
+
+@app.errorhandler(404)
+def not_found(e):
+    return make_response(jsonify({"message": "Not found", "success": False}), 404)
+
+
+@app.errorhandler(400)
+def bad_request(e):
+    return make_response(jsonify({"message": "Bad Request!", "success": False}), 400)
+
+
+# ===================================== #
 # Read (Get) Functionality:
 # ## Read-All Records helper function
 # ===================================== #
 def read_records():
-    with open(db_path, "r") as db_list:
+    # Check guard : for potential file not exist
+    try:
         records = []
+        with open(db_path, "r") as db_list:
 
-        for record in db_list:
-            records.append(json.loads(record))
+            for record in db_list:
+                records.append(json.loads(record))
 
         return records
+    except:
+        return []
 
 
 @app.route('/', methods=["GET"])
 def get_all():
+    is_json()
+
     records = read_records()
     return jsonify({"data": records})
 
@@ -70,21 +105,19 @@ def get_all():
 @app.route('/<int:incoming_id>', methods=["GET"])
 def get_one(incoming_id):
     # Check guard : JSON data only
-    if not request.json:
-        abort(400)
+    is_json()
 
     records = read_records()
-    target_record = []
+    target = []
 
     for record in records:
         if record["id"] == incoming_id:
-            target_record.append(record)
+            target.append(record)
 
     # Check guard : no match found (404)
-    if len(target_record) == 0:
-        abort(404)
+    target_not_found(target)
 
-    return jsonify({"data": target_record[0], "message": "Found!", "success": True})
+    return jsonify({"data": target[0], "message": "Found!", "success": True})
 
 
 # ===================================== #
@@ -99,12 +132,11 @@ def rebuild_records(new_record):
 @app.route('/<int:incoming_id>', methods=['PUT'])
 def update_record(incoming_id):
     # Check guard : JSON data only
-    if not request.json:
-        abort(400)
+    is_json()
 
     records = read_records()
     new_records = []
-    update_target = []
+    target = []
 
     for record in records:
         if record["id"] == incoming_id:
@@ -112,14 +144,13 @@ def update_record(incoming_id):
             record['name'] = request.json['name']
             record['idea'] = request.json['idea']
             record['url'] = request.json["url"]
-            update_target.append(record)
+            target.append(record)
 
         # ReBuild new_records list
         new_records.append(record)
 
     # Check guard : no match found (404)
-    if len(update_target) == 0:
-        abort(404)
+    target_not_found(target)
 
     # Clear old_records and add new_records
     with open(db_path, "w"):
@@ -135,20 +166,18 @@ def update_record(incoming_id):
 @app.route('/<int:incoming_id>', methods=["DELETE"])
 def del_record(incoming_id):
     # Check guard : JSON data only
-    if not request.json:
-        abort(400)
+    is_json()
 
     records = read_records()
-    removed_target = []
+    target = []
 
     for record in records:
         if record["id"] == incoming_id:
-            removed_target.append(record)
+            target.append(record)
             records.remove(record)
 
     # Check guard : no match found (404)
-    if len(removed_target) == 0:
-        abort(404)
+    target_not_found(target)
 
     # Make copy of records list to ReBuild new_records
     new_records = records
