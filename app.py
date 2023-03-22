@@ -45,6 +45,15 @@ def home_route():
 
     return html
 
+
+@app.route('/dashboard')
+def dashboard_route():
+    html = get_html("dashboard")
+    get_css("style")
+    get_javascript("main")
+
+    return html
+
 # API setup:
 # ===================================== #
 # # Create (POST) Functionality:
