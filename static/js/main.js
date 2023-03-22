@@ -79,6 +79,9 @@ const isDashboard = () => {
   }
 };
 
+//  // View Requests References and general setup
+const viewAllUl = document.getElementById('view-all-ul');
+
 // // Request Build References and general setup
 const reqForm = document.getElementById('req-build-form');
 const reqName = document.getElementById('req-build-name');
@@ -95,8 +98,62 @@ let curState = {
 
 class Records {
   constructor() {
+    // this.list = this.buildRecords() || [];
     this.list = [];
+    console.log('fetching....');
+    // this.buildRecords();
+  }
+
+  // Check if method is used as event or no,
+  // If event preventDefault
+  isEvent(event) {
+    if (event) {
+      event.preventDefault();
+    }
+  }
+
+  // Fetch Records From API Functionality
+  async fetchAll(event) {
+    this.isEvent(event);
+
+    try {
+      const response = await axios.get(baseApiURL);
+      const records = response.data.result;
+      return records;
+    } catch (error) {
+      // === DEV-ONLY ===
+      console.log('Error...', error);
+    }
+  }
+
+  // Build Records From Fetched API Data Functionality
+  async buildRecords(event) {
+    this.isEvent(event);
+    let fetchedList = await this.fetchAll();
+
+    // Clear OldList
+    this.list = [];
+
+    // Build with new Data
+    fetchedList.map((r) => {
+      this.list.push(r);
+    });
+
+    return this.list;
   }
 }
 
-let requests = new Records();
+// View all Requests onClick Action functionality
+async function viewAll(event) {
+  // Get requests list from API
+  let requests = new Records();
+  let list = await requests.buildRecords(event);
+
+  // Initial List-View builder
+  list.map((request) => {
+    const { id, name, idea, url } = request;
+    viewAllUl.innerHTML += `<li class="view-all-items"><p> id: ${id}, name: ${name}, idea: ${idea}, url: ${url}</p></li>`;
+  });
+}
+
+viewRequests.addEventListener('click', viewAll, { once: true });

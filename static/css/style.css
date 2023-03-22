@@ -218,6 +218,7 @@ li {
 html {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
+  color: white;
 }
 
 a {
@@ -410,6 +411,8 @@ body {
 }
 .hero-section-img img {
   max-width: 100%;
+  transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
 }
 @media (min-width: 992px) {
   .hero-section-img {
