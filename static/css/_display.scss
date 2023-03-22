@@ -1,4 +1,5 @@
 @use 'variables' as v;
+@use 'helpers' as h;
 
 // Additional browsers style reset
 html {
@@ -49,6 +50,16 @@ body {
   width: 100%;
 }
 
+.body {
+  &-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // flex-grow: 1;
+    // min-height: 15rem;}
+  }
+}
 // Top Colored line
 .top-line {
   height: 0.2rem;
@@ -60,3 +71,48 @@ body {
     ),
     linear-gradient(110deg, rgba(v.$orange, 1) 65%, rgba(v.$ylw, 1) 80%);
 }
+
+// ==== Utilities - START ====
+// Container
+.container {
+  width: 100%;
+
+  @media (min-width: v.$small) {
+    max-width: 480px;
+  }
+  @media (min-width: v.$med) {
+    max-width: 768px;
+  }
+  @media (min-width: v.$large) {
+    max-width: 992px;
+  }
+  @media (min-width: v.$xlarge) {
+    max-width: 1200px;
+  }
+}
+
+// Center
+.center {
+  margin: 0 auto;
+
+  &-h {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  &-v {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  &-max {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// ==== Utilities - END ====

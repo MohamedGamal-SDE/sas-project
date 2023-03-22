@@ -225,8 +225,59 @@ body {
   width: 100%;
 }
 
+.body-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .top-line {
   height: 0.2rem;
   width: 100%;
   background: linear-gradient(90deg, royalblue 20%, rgba(254, 89, 69, 0) 40%), linear-gradient(110deg, #fe5945 65%, #fff200 80%);
+}
+
+.container {
+  width: 100%;
+}
+@media (min-width: 480px) {
+  .container {
+    max-width: 480px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 992px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+.center {
+  margin: 0 auto;
+}
+.center-h {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
+.center-v {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+}
+.center-max {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=style.css.map */

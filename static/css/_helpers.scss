@@ -1,0 +1,36 @@
+// Pixel to Rem Converter
+@function pxRemCalc($num) {
+  $remSize: calc($num / 16);
+  @return #{$remSize}rem;
+}
+
+// Flexbox Short-hand
+@mixin flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flexRow {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flexCntH {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+@mixin flexCntMx {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+@mixin flexNav() {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
