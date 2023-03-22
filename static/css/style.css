@@ -882,4 +882,24 @@ body {
 }
 .portfolio-item:hover .portfolio-item-overlay {
   opacity: 1;
+}
+
+.cta-last {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 3rem;
+  gap: 1rem;
+}
+.cta-last-h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+@media (min-width: 992px) {
+  .cta-last-h1 {
+    font-size: 2.5rem;
+  }
 }/*# sourceMappingURL=style.css.map */

@@ -1,5 +1,5 @@
 @use 'baseline';
-@use 'variables' as var;
+@use 'variables' as v;
 @use 'helpers' as h;
 @use 'display';
 @use 'navbar';
@@ -9,3 +9,23 @@
 @use 'services';
 @use 'statistics';
 @use 'portfolio';
+
+.cta-last {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 3rem;
+  gap: 1rem;
+
+  &-h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: v.$wit;
+
+    @media (min-width: v.$large) {
+      font-size: 2.5rem;
+    }
+  }
+}
