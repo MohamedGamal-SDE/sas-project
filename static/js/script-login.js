@@ -19,8 +19,11 @@ if (!loggedIn && currentLocation === '/login') {
 
     let emptyAuth =
       username.value.trim() !== '' && password.value.trim() !== '';
+
+    // Stronger Password to prevent chrome weak pass alert
     let loginAuth =
-      username.value.trim() === 'demo' && password.value.trim() === '1234';
+      username.value.trim() === 'demo' &&
+      password.value.trim() === 'FakePass032023';
 
     // Check guard for Empty/Whitespace inputs
     if (emptyAuth) {
@@ -41,11 +44,11 @@ if (!loggedIn && currentLocation === '/login') {
         username.value = '';
         password.value = '';
         formNotify.innerHTML = notifyMsg;
+        delayReset(formNotify);
       }
     } else {
-      // username.value = '';
-      // password.value = '';
       formNotify.innerHTML = notifyMsgMissing;
+      delayReset(formNotify);
     }
   }
 
