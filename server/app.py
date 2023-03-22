@@ -25,7 +25,7 @@ def build_record(id, name, idea, url):
 
 
 # ## Create Record (Handle POST request)
-@app.route('/', methods=['POST'])
+@app.route('/api/v1/', methods=['POST'])
 def create_record():
     # Check guard : JSON data only (or)
     # If Incoming request not including "id" which means its invalid or empty
@@ -91,7 +91,7 @@ def read_records():
         return []
 
 
-@app.route('/', methods=["GET"])
+@app.route('/api/v1/', methods=["GET"])
 def get_all():
     is_json()
 
@@ -102,7 +102,7 @@ def get_all():
 # ------------------------------------- #
 # # Read "GET" get single record functionality:
 # ------------------------------------- #
-@app.route('/<int:incoming_id>', methods=["GET"])
+@app.route('/api/v1/<int:incoming_id>', methods=["GET"])
 def get_one(incoming_id):
     # Check guard : JSON data only
     is_json()
@@ -129,7 +129,7 @@ def rebuild_records(new_record):
         db_file.write(f"{json.dumps(new_record)} \n")
 
 
-@app.route('/<int:incoming_id>', methods=['PUT'])
+@app.route('/api/v1/<int:incoming_id>', methods=['PUT'])
 def update_record(incoming_id):
     # Check guard : JSON data only
     is_json()
@@ -163,7 +163,7 @@ def update_record(incoming_id):
 # ===================================== #
 # # DELETE record (DELETE) functionality:
 # ===================================== #
-@app.route('/<int:incoming_id>', methods=["DELETE"])
+@app.route('/api/v1/<int:incoming_id>', methods=["DELETE"])
 def del_record(incoming_id):
     # Check guard : JSON data only
     is_json()
