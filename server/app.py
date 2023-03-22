@@ -45,7 +45,7 @@ def create_record():
 
 
 # ===================================== #
-# READ (Get) Functionality:
+# Read (Get) Functionality:
 # ## Read-All Records helper function
 # ===================================== #
 def read_records():
@@ -62,3 +62,26 @@ def read_records():
 def get_all():
     records = read_records()
     return jsonify({"data": records})
+
+
+# ------------------------------------- #
+# # Read "GET" get single record functionality:
+# ------------------------------------- #
+@app.route('/<int:incoming_id>', methods=["GET"])
+def get_one(incoming_id):
+    # Check guard : JSON data only
+    if not request.json:
+        abort(400)
+
+    records = read_records()
+    target_record = []
+
+    for record in records:
+        if record["id"] == incoming_id:
+            target_record.append(record)
+
+    # Check guard : no match found (404)
+    if len(target_record) == 0:
+        abort(404)
+
+    return jsonify({"data": target_record[0], "message": "Found!", "success": True})
