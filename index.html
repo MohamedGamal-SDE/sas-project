@@ -25,6 +25,12 @@
     ></script>
     <!-- External libraries - END -->
     <link rel="stylesheet" href="static/css/style.css" />
+
+    <!-- Content Scripts - Start -->
+    <script src="/static/js/dash-content.js"></script>
+    <script src="/static/js/dash-login.js"></script>
+    <!-- Content Scripts - END -->
+
     <title>SAS - Your IDEA to APP in a blink</title>
   </head>
   <body>
@@ -68,20 +74,27 @@
         <img src="./static/images/hero-img.svg" alt="" />
       </div>
       <div class="hero-section-content">
-        <!-- <h1>Simple App Studio (SAS)</h1> -->
-        <h1>Simple App Studio (SAS)</h1>
-        <h2>You think it we build it</h2>
-        <p>
-          With SAS the only thing stopping is your imaginations, we make your
-          App idea come to life, all you have to is share your idea and sketch
-          and wait for the magic to happens
-        </p>
+        <div class="hero-section-content--text">
+          <h1>Simple App Studio (SAS)</h1>
+          <h2>You think it we build it ...</h2>
+          <p>
+            With SAS the only thing stopping you is your imaginations, we make
+            your App idea come to life, all you have to do is share your idea
+            and sketch and wait for the magic to happens.
+          </p>
+        </div>
+        <div class="hero-section-content--cta">
+          <a href="/dashboard" class="cta-btn--hero">Get Your Dream APP Now!</a>
+        </div>
       </div>
     </section>
     <!-- HeroSection - END -->
 
+    <!-- Services -->
+    <div id="services"></div>
+
     <!-- Main-Body -->
     <div class="body-wrap"><h1>Hello</h1></div>
-    <script type="module" src="static/js/main.js"></script>
+    <script src="static/js/main.js"></script>
   </body>
 </html>

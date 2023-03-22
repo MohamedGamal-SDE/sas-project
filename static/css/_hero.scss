@@ -1,5 +1,6 @@
 @use 'variables' as v;
 
+// Hero Section
 .hero-section {
   display: flex;
   flex-direction: column;
@@ -8,6 +9,7 @@
   gap: 0.5rem;
   padding: 0.5rem;
 
+  // Illustration
   &-img {
     img {
       max-width: 100%;
@@ -19,18 +21,32 @@
     }
   }
 
+  // Text & CTA Content
   &-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
     color: v.$wit;
 
-    h1 {
-      font-size: 3rem;
+    &--text {
+      padding: 1rem;
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      p {
+        font-size: 1.25rem;
+        color: v.$bgGray;
+      }
     }
 
-    p {
-      font-size: 1.25rem;
-      color: v.$bgGray;
-    }
+    // &--cta {
+    // }
 
+    // Content on Large Screens
     @media (min-width: v.$large) {
       max-width: 50%;
     }
@@ -39,4 +55,22 @@
   @media (min-width: v.$large) {
     flex-direction: row-reverse;
   }
+}
+
+// CTA-Btn--hero
+.cta-btn--hero {
+  display: block;
+  background-color: v.$blu;
+  border: 2px solid v.$blu_d;
+  color: v.$wit;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.cta-btn--hero:hover {
+  background-color: v.$blu_d;
+  color: v.$wit;
+  border: 2px solid v.$blu;
 }
