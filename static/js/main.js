@@ -1,22 +1,60 @@
-// Build Hamburger menu toggler
-// Initial setup
-const toggle = document.querySelector('.toggle');
-const menu = document.querySelector('.menu');
+// ============================================= //
+// Global Setup
+// ============================================= //
+const baseURL = window.location.origin;
+// `http://127.0.0.1:5000/api/v1`
+const baseApiURL = `${baseURL}/api/v1`;
 
-// toggler onClick functionality
-function toggleMenu() {
-  if (menu.classList.contains('active')) {
-    // Handle open:
-    // Close and Show Hamburger icon
-    menu.classList.remove('active');
-    toggle.querySelector('a').innerHTML = "<i class='fas fa-bars'></i>";
-  } else {
-    // Handle close:
-    // Open and Show close icon
-    menu.classList.add('active');
-    toggle.querySelector('a').innerHTML = "<i class='fas fa-times'></i>";
+// ============================================= //
+// LogIn Page Setup
+// ============================================= //
+
+if (!loggedIn && window.location.pathname === '/login') {
+  // General Setup
+  const username = document.getElementById('username');
+  const password = document.getElementById('password');
+  const sendBtn = document.getElementById('send');
+  const formNotify = document.getElementById('from-notify');
+  let notifyMsg = `<div class="form-msg">Invalid Data!</div>`;
+  let notifyMsgMissing = `<div class="form-msg">Please fill both fields!</div>`;
+  let currentUser = '';
+  let currentPass = '';
+
+  // Login Action
+  function setLogin(event) {
+    event.preventDefault();
+
+    let emptyAuth =
+      username.value.trim() !== '' && password.value.trim() !== '';
+    let loginAuth =
+      username.value.trim() === 'demo' && password.value.trim() === '1234';
+
+    // Check guard for Empty/Whitespace inputs
+    if (emptyAuth) {
+      // Successful Login
+      if (loginAuth) {
+        currentUser = username.value.trim();
+        currentPass = password.value.trim();
+
+        formNotify.innerHTML = `<div class="form-msg">Successful</div>`;
+
+        // Save to localStorage
+        localStorage.setItem('username', currentUser);
+        localStorage.setItem('password', currentPass);
+
+        // Redirect to Dashboard
+        window.location = `${baseURL}/dashboard`;
+      } else {
+        username.value = '';
+        password.value = '';
+        formNotify.innerHTML = notifyMsg;
+      }
+    } else {
+      // username.value = '';
+      // password.value = '';
+      formNotify.innerHTML = notifyMsgMissing;
+    }
   }
-}
 
-// Trigger the toggler when menu clicked
-toggle.addEventListener('click', toggleMenu);
+  sendBtn.addEventListener('click', setLogin);
+}
