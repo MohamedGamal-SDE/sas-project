@@ -11,7 +11,7 @@ const storedList = JSON.parse(localStorage.getItem('records'));
 // ---------------------------------------------- //
 // View all Requests onClick Action functionality
 function viewAll(event) {
-  event.preventDefault();
+  // event.preventDefault();
   console.log(storedList, 'storedNames');
 
   // Initial List-View builder
@@ -23,12 +23,17 @@ function viewAll(event) {
 
 // viewRequests.addEventListener('click', viewAll, { once: true });
 // Register View Requests Global EventListener
-document.addEventListener(
-  'click',
-  (event) => {
-    if (event.target.classList.contains('view-btn')) {
-      viewAll(event);
-    }
-  },
-  { once: true }
-);
+// document.addEventListener(
+//   'click',
+//   (event) => {
+//     if (event.target.classList.contains('view-btn')) {
+//       viewAll(event);
+//     }
+//   },
+//   { once: true }
+// );
+
+window.addEventListener('load', () => {
+  // const records = new Records();
+  viewAll();
+});
