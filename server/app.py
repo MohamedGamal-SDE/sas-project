@@ -42,3 +42,23 @@ def create_record():
     build_record(r_id, r_name, r_idea, r_url)
 
     return jsonify({"message": "Created!", "success": True})
+
+
+# ===================================== #
+# READ (Get) Functionality:
+# ## Read-All Records helper function
+# ===================================== #
+def read_records():
+    with open(db_path, "r") as db_list:
+        records = []
+
+        for record in db_list:
+            records.append(json.loads(record))
+
+        return records
+
+
+@app.route('/', methods=["GET"])
+def get_all():
+    records = read_records()
+    return jsonify({"data": records})
