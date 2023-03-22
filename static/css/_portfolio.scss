@@ -1,0 +1,73 @@
+@use 'variables' as v;
+
+// ====== Portfolio Block ======
+.portfolio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem 0.5rem;
+
+  @media (min-width: v.$large) {
+    flex-direction: row;
+  }
+
+  // Mini Card
+  &-item {
+    position: relative;
+    width: 100%;
+    max-width: 40rem;
+    overflow: hidden;
+    border-radius: 0.6rem;
+    box-shadow: 0 0.25rem 1.25rem rgba(v.$bgMain, 0.2);
+
+    @media (min-width: v.$med) {
+      width: calc(50% - 0rem);
+    }
+
+    @media (min-width: v.$large) {
+      width: calc(33.33% - 0rem);
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    // Mini Card Project overlay Content
+    &-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(v.$bgMain, 0.5);
+      color: v.$bgMain;
+
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+
+      h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 0.6rem;
+      }
+
+      p {
+        font-size: 1rem;
+        text-align: center;
+      }
+    }
+
+    // Show overlay setting
+    &:hover .portfolio-item-overlay {
+      opacity: 1;
+    }
+  }
+}

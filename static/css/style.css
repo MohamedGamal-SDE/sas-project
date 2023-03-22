@@ -715,6 +715,7 @@ body {
   justify-content: center;
   gap: 1.5rem;
   margin-top: 1.25rem;
+  padding: 0 0.5rem;
 }
 @media (min-width: 992px) {
   .services-container {
@@ -796,7 +797,12 @@ body {
 }
 @media (min-width: 768px) {
   .stats-item {
-    margin: 0 1rem;
+    margin: 1rem 1rem 0;
+  }
+}
+@media (min-width: 992px) {
+  .stats-item {
+    margin: 0rem 1rem 0;
   }
 }
 .stats-item:hover {
@@ -812,4 +818,68 @@ body {
   font-size: 1.25rem;
   text-transform: uppercase;
   font-weight: bold;
+}
+
+.portfolio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem 0.5rem;
+}
+@media (min-width: 992px) {
+  .portfolio {
+    flex-direction: row;
+  }
+}
+.portfolio-item {
+  position: relative;
+  width: 100%;
+  max-width: 40rem;
+  overflow: hidden;
+  border-radius: 0.6rem;
+  box-shadow: 0 0.25rem 1.25rem rgba(18, 18, 18, 0.2);
+}
+@media (min-width: 768px) {
+  .portfolio-item {
+    width: calc(50% - 0rem);
+  }
+}
+@media (min-width: 992px) {
+  .portfolio-item {
+    width: calc(33.33% - 0rem);
+  }
+}
+.portfolio-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.portfolio-item-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(18, 18, 18, 0.5);
+  color: #121212;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.portfolio-item-overlay h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.6rem;
+}
+.portfolio-item-overlay p {
+  font-size: 1rem;
+  text-align: center;
+}
+.portfolio-item:hover .portfolio-item-overlay {
+  opacity: 1;
 }/*# sourceMappingURL=style.css.map */
