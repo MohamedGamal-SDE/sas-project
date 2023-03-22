@@ -37,10 +37,17 @@ def get_javascript(file_name):
 
 # ## Helper function to fetch javascript files
 def get_js_general():
-    get_javascript("main")
     get_javascript("header")
     get_javascript("hero")
     get_javascript("dash-nav")
+    get_javascript("view-item")
+
+    get_javascript("main")
+    get_javascript("script-dash-general")
+    get_javascript("script-login")
+    get_javascript("script-req")
+    get_javascript("script-view")
+
 
 # ===================================== #
 # # Main Routes
