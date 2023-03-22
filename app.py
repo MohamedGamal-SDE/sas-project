@@ -5,6 +5,46 @@ from flask import Flask, jsonify, request, abort, make_response
 app = Flask(__name__)
 db_path = 'db/db.txt'
 
+
+# App route Setup:
+# ===================================== #
+# # HTML/CSS/JS get handlers
+# ===================================== #
+
+
+def get_html(page_name):
+    html_file = open(page_name + '.html')
+    content = html_file.read()
+    html_file.close()
+    return content
+
+
+def get_css(file_name):
+    css_file = open('static/css/' + file_name + '.css')
+    content = css_file.read()
+    css_file.close()
+    return content
+
+
+def get_javascript(file_name):
+    js_file = open('static/js/' + file_name + '.js')
+    content = js_file.read()
+    js_file.close()
+    return content
+
+# ===================================== #
+# # Main Routes
+# ===================================== #
+
+
+@app.route('/')
+def home_route():
+    html = get_html("index")
+    get_css("style")
+    get_javascript("main")
+
+    return html
+
 # API setup:
 # ===================================== #
 # # Create (POST) Functionality:
