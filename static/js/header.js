@@ -23,7 +23,7 @@ const headerJSContent = `
 
       <!-- CTA -->
       <li class="item cta-btn--top" id="switch-topcta">
-        <a href="/dashboard">Request Build</a>
+        <a href="/request">Request Build</a>
       </li>
 
       <!-- Toggler -->
@@ -66,7 +66,7 @@ if (!loggedIn) {
   switchTopCTA.innerHTML = `<a href="/login">Request Build</a>`;
 } else {
   switchTopNav.innerHTML = `<a href="/dashboard">Dashboard</a>`;
-  switchTopCTA.innerHTML = `<a href="/dashboard">Request Build</a>`;
+  switchTopCTA.innerHTML = `<a href="/request">Request Build</a>`;
 }
 
 // ============================================= //
