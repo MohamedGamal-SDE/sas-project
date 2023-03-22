@@ -423,4 +423,62 @@ body {
   background-color: #2445a6;
   color: #fff;
   border: 2px solid #4169e1;
+}
+
+.form {
+  max-width: 80%;
+  margin: 2rem auto 0;
+}
+@media (min-width: 992px) {
+  .form {
+    max-width: 60%;
+  }
+}
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+}
+.form-wrapper input[type=text],
+.form-wrapper input[type=password],
+.form-wrapper input[type=url],
+.form-wrapper textarea {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #fe5945;
+  padding: 1rem 1rem;
+  outline: none;
+}
+.form-wrapper textarea {
+  resize: none;
+}
+.form-wrapper input[type=submit] {
+  width: 100%;
+  border: 4px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  padding: 1rem 0.5rem;
+  outline: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+.form-wrapper input[type=submit]:hover {
+  border: 4px solid #fe5945;
+  color: #fe5945;
+}
+.form-msg {
+  width: 100%;
+  border-bottom: 4px solid #fff200;
+  color: #fe5945;
+  padding: 0.5rem;
+}
+.form-hint {
+  align-self: flex-start;
+  font-size: 1rem;
+  color: #fff;
 }/*# sourceMappingURL=style.css.map */

@@ -32,6 +32,17 @@ def get_javascript(file_name):
     js_file.close()
     return content
 
+
+# ## Helper function to fetch javascript files
+def get_js_general():
+    get_javascript("main")
+    get_javascript("dash-content")
+    get_javascript("dash-login")
+
+
+def get_js_dash():
+    get_javascript("dash")
+
 # ===================================== #
 # # Main Routes
 # ===================================== #
@@ -41,7 +52,7 @@ def get_javascript(file_name):
 def home_route():
     html = get_html("index")
     get_css("style")
-    get_javascript("main")
+    get_js_general()
 
     return html
 
@@ -50,7 +61,8 @@ def home_route():
 def dashboard_route():
     html = get_html("dashboard")
     get_css("style")
-    get_javascript("main")
+    get_js_general()
+    get_js_dash()
 
     return html
 

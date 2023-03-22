@@ -19,11 +19,62 @@
       referrerpolicy="no-referrer"
     ></script>
     <!-- External libraries - END -->
+    <link
+      rel="shortcut icon"
+      href="static/images/favicon.ico"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="static/css/style.css" />
+
+    <!-- Content Scripts - Start -->
+    <script src="/static/js/dash-content.js"></script>
+    <script src="/static/js/dash-login.js"></script>
+    <!-- Content Scripts - END -->
+
     <title>Dashboard</title>
   </head>
   <body>
-    Hello from dashboard!
-    <script type="module" src="static/js/main.js"></script>
+    <!-- Top-Line -->
+    <div class="top-line"></div>
+
+    <header>
+      <!-- Navbar- START-->
+      <nav>
+        <ul class="menu">
+          <!-- Logo -->
+          <li class="logo">
+            <a href="/">SAS</a>
+          </li>
+
+          <!-- Nav-Links -->
+          <li class="item divider">
+            <a href="/">Home</a>
+          </li>
+          <li class="item">
+            <a href="/dashboard">Dashboard</a>
+          </li>
+
+          <!-- CTA -->
+          <li class="item cta-btn--top">
+            <a href="/dashboard">Request Build</a>
+          </li>
+
+          <!-- Toggler -->
+          <li class="toggle">
+            <a href="#"><i class="fas fa-bars"></i></a>
+          </li>
+        </ul>
+        <!-- Navbar- END-->
+      </nav>
+    </header>
+
+    <!-- Dashboard BODY -->
+    <div id="dashboard"></div>
+
+    <!-- Dashboard Content -->
+    <div id="dashboard-content"></div>
+
+    <script src="static/js/main.js"></script>
+    <script src="static/js/dash.js"></script>
   </body>
 </html>

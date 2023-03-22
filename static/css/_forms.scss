@@ -1,0 +1,70 @@
+@use 'variables' as v;
+
+// ==== Forms ====
+// Dashboard Login
+.form {
+  max-width: 80%;
+  margin: 2rem auto 0;
+
+  @media (min-width: v.$large) {
+    max-width: 60%;
+  }
+
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+
+    // General Inputs
+    input[type='text'],
+    input[type='password'],
+    input[type='url'],
+    textarea {
+      width: 100%;
+      background-color: v.$wit;
+      border: 1px solid v.$orange;
+      padding: 1rem 1rem;
+      outline: none;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    input[type='submit'] {
+      width: 100%;
+      border: 4px solid v.$wit;
+      background-color: transparent;
+      color: v.$wit;
+      padding: 1rem 0.5rem;
+      outline: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    input[type='submit']:hover {
+      border: 4px solid v.$orange;
+      color: v.$orange;
+    }
+  }
+
+  // Notify Message
+  &-msg {
+    width: 100%;
+    border-bottom: 4px solid v.$ylw;
+    color: v.$orange;
+    padding: 0.5rem;
+  }
+
+  // Secret HINT ;)
+  &-hint {
+    align-self: flex-start;
+    font-size: 1rem;
+    color: v.$wit;
+  }
+}
