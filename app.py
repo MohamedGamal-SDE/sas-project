@@ -99,6 +99,16 @@ def view_route():
 
     return html
 
+# 404 Client Edition
+
+
+@app.errorhandler(404)
+def not_found(e):
+    html = get_html("404")
+    get_css("style")
+    get_js_general()
+
+    return html
 
 # API setup:
 # ===================================== #
@@ -158,10 +168,10 @@ def target_not_found(target):
         abort(404)
 
 
-@app.errorhandler(404)
-def not_found(e):
-    return make_response(jsonify({"message": "Not found", "success": False}), 404)
-
+# 404 Server Edition
+# @app.errorhandler(404)
+# def not_found(e):
+#     return make_response(jsonify({"message": "Not found", "success": False}), 404)
 
 @app.errorhandler(400)
 def bad_request(e):

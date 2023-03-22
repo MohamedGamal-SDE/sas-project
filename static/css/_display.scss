@@ -129,3 +129,25 @@ body {
   display: block;
 }
 // ==== Utilities - END ====
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  padding: 10rem 0;
+
+  &-h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: rgba(v.$orange, 1);
+  }
+
+  &-p {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgba(v.$bgGray, 1);
+  }
+}
