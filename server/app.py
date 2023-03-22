@@ -85,3 +85,45 @@ def get_one(incoming_id):
         abort(404)
 
     return jsonify({"data": target_record[0], "message": "Found!", "success": True})
+
+
+# ===================================== #
+# # Update record (PUT) functionality:
+# ## Add Update DB file helper function
+# ===================================== #
+def rebuild_records(new_record):
+    with open(db_path, "a+") as db_file:
+        db_file.write(f"{json.dumps(new_record)} \n")
+
+
+@app.route('/<int:incoming_id>', methods=['PUT'])
+def update_record(incoming_id):
+    # Check guard : JSON data only
+    if not request.json:
+        abort(400)
+
+    records = read_records()
+    new_records = []
+    update_target = []
+
+    for record in records:
+        if record["id"] == incoming_id:
+            # ReBuild target record
+            record['name'] = request.json['name']
+            record['idea'] = request.json['idea']
+            record['url'] = request.json["url"]
+            update_target.append(record)
+
+        # ReBuild new_records list
+        new_records.append(record)
+
+    # Check guard : no match found (404)
+    if len(update_target) == 0:
+        abort(404)
+
+    # Clear old_records and add new_records
+    with open(db_path, "w"):
+        for record in new_records:
+            rebuild_records(record)
+
+    return jsonify({"message": "Updated!", "success": True})
