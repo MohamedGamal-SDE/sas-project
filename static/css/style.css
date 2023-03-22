@@ -902,4 +902,25 @@ body {
   .cta-last-h1 {
     font-size: 2.5rem;
   }
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  gap: 0.5rem;
+  background: #242424;
+  padding: 2rem;
+}
+.footer-copyrights {
+  color: #d0d1d3;
+}
+.footer-social {
+  font-size: 1.25rem;
+  color: white;
+}
+.footer-social .fa-brands:hover {
+  color: #fe5945;
 }/*# sourceMappingURL=style.css.map */
