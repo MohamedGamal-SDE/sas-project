@@ -187,6 +187,11 @@ html {
   box-sizing: border-box;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+}
+
 *,
 *:before,
 *:after {
@@ -280,4 +285,79 @@ body {
   margin: 0 auto;
   justify-content: center;
   align-items: center;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #242424;
+  padding: 0 0.5rem;
+  background-color: transparent;
+}
+.menu li a {
+  display: block;
+  padding: 0.6rem 0.3rem;
+}
+.menu li.cta-btn--top a {
+  padding: 0.7rem 1rem;
+}
+
+.logo {
+  font-size: 1.25rem;
+  padding: 0.5rem 0.7rem 0.5rem 0;
+  flex: 1;
+  order: 0;
+}
+
+.item {
+  order: 3;
+  width: 100%;
+  text-align: center;
+  display: none;
+}
+.item.cta-btn--top {
+  order: 1;
+  padding: 0.6rem 0.32rem;
+  width: auto;
+  display: block;
+}
+.item:not(.cta-btn--top) a:hover,
+.item .item a:hover::after {
+  color: #d0d1d3;
+}
+
+.active .item {
+  display: block;
+}
+
+.divider {
+  border-bottom: 1px solid #242424;
+}
+@media (min-width: 992px) {
+  .divider {
+    border-bottom: 0;
+  }
+}
+
+.cta-btn--top a {
+  background-color: #4169e1;
+  border: 2px solid #2445a6;
+  color: #fff;
+  border-radius: 0.5rem;
+  font-weight: 600;
+}
+
+.cta-btn--top a:hover {
+  background-color: #2445a6;
+  color: #fff;
+  border: 2px solid #4169e1;
+}
+
+.toggle {
+  order: 2;
+  flex: 1;
+  text-align: right;
+  font-size: 1.5rem;
 }/*# sourceMappingURL=style.css.map */

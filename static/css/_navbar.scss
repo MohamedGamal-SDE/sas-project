@@ -1,0 +1,85 @@
+@use 'variables' as v;
+@use 'helpers' as h;
+
+// Navbar - Main -
+// Main TopNav Styles (*mobile-first)
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid v.$brdDrk;
+  padding: 0 0.5rem;
+  background-color: transparent;
+
+  li a {
+    display: block;
+    padding: 0.6rem 0.3rem;
+  }
+
+  li.cta-btn--top a {
+    padding: 0.7rem 1rem;
+  }
+}
+
+// Logo
+.logo {
+  font-size: 1.25rem;
+  padding: 0.5rem 0.7rem 0.5rem 0;
+  flex: 1;
+  order: 0;
+}
+
+// Nav-links
+.item {
+  order: 3;
+  width: 100%;
+  text-align: center;
+  display: none;
+
+  &.cta-btn--top {
+    order: 1;
+    padding: 0.6rem 0.32rem;
+    width: auto;
+    display: block;
+  }
+
+  &:not(.cta-btn--top)a:hover,
+  .item a:hover::after {
+    color: v.$bgGray;
+  }
+}
+
+.active .item {
+  display: block;
+}
+
+.divider {
+  border-bottom: 1px solid v.$brdDrk;
+  @media (min-width: v.$large) {
+    border-bottom: 0;
+  }
+}
+
+// CTA-Btn--top
+.cta-btn--top a {
+  background-color: v.$blu;
+  border: 2px solid v.$blu_d;
+  color: v.$wit;
+  border-radius: 0.5rem;
+  font-weight: 600;
+}
+
+.cta-btn--top a:hover {
+  background-color: v.$blu_d;
+  color: v.$wit;
+  border: 2px solid v.$blu;
+}
+
+// Toggler
+.toggle {
+  order: 2;
+  flex: 1;
+  text-align: right;
+  font-size: 1.5rem;
+}
