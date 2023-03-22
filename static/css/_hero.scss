@@ -1,0 +1,42 @@
+@use 'variables' as v;
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  gap: 0.5rem;
+  padding: 0.5rem;
+
+  &-img {
+    img {
+      max-width: 100%;
+      border-radius: 1rem;
+    }
+
+    @media (min-width: v.$large) {
+      max-width: 50%;
+    }
+  }
+
+  &-content {
+    color: v.$wit;
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1.25rem;
+      color: v.$bgGray;
+    }
+
+    @media (min-width: v.$large) {
+      max-width: 50%;
+    }
+  }
+
+  @media (min-width: v.$large) {
+    flex-direction: row-reverse;
+  }
+}
