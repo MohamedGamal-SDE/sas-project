@@ -2,13 +2,17 @@
 @use 'helpers' as h;
 
 // Navbar - Main -
+.navbar {
+  border-bottom: 2px solid v.$brdDrk;
+}
+
 // Main TopNav Styles (*mobile-first)
 .menu {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid v.$brdDrk;
+
   padding: 0 0.5rem;
   background-color: transparent;
 
@@ -20,6 +24,14 @@
   li.cta-btn--top a {
     padding: 0.7rem 1rem;
   }
+
+  // PC Edition
+  @media (min-width: v.$large) {
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
 }
 
 // Logo
@@ -28,6 +40,11 @@
   padding: 0.5rem 0.7rem 0.5rem 0;
   flex: 1;
   order: 0;
+
+  // PC Edition
+  @media (min-width: v.$large) {
+    align-self: center;
+  }
 }
 
 // Nav-links
@@ -42,11 +59,30 @@
     padding: 0.6rem 0.32rem;
     width: auto;
     display: block;
+
+    // PC Edition
+    @media (min-width: v.$large) {
+      order: 2;
+      margin-left: 1rem;
+    }
   }
 
   &:not(.cta-btn--top)a:hover,
   .item a:hover::after {
     color: v.$bgGray;
+    // background-color: lighten(v.$bgMain, 1);
+  }
+
+  // PC Edition (NAV-LINKS)
+  @media (min-width: v.$large) {
+    order: 1;
+    display: block;
+    width: auto;
+
+    &:not(.cta-btn--top) {
+      padding: 0;
+      align-self: center;
+    }
   }
 }
 
@@ -56,6 +92,8 @@
 
 .divider {
   border-bottom: 1px solid v.$brdDrk;
+
+  // PC Edition
   @media (min-width: v.$large) {
     border-bottom: 0;
   }
@@ -82,4 +120,9 @@
   flex: 1;
   text-align: right;
   font-size: 1.5rem;
+
+  // PC Edition
+  @media (min-width: v.$large) {
+    display: none;
+  }
 }

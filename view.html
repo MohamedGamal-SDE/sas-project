@@ -33,20 +33,24 @@
     <script src="/static/js/header.js"></script>
     <!-- Shared Header - END -->
 
-    <!-- Dashboard NAV - Start -->
-    <nav>
-      <ul class="dash-nav">
-        <li class="dash-nav-btn" id="req-build">
-          <a href="/request">Request App Build</a>
-        </li>
-        <li class="dash-nav-btn" id="view-requests">
-          <a href="/view">View all Requests</a>
-        </li>
-      </ul>
-    </nav>
-    <!-- Dashboard NAV - END-->
+    <div class="container center">
+      <!-- Dashboard NAV - Start -->
+      <nav>
+        <ul class="dash-nav">
+          <li class="dash-nav-btn" id="req-build">
+            <a href="/request">Request App Build</a>
+          </li>
+          <button class="dash-nav-btn" id="view-requests">
+            <a href="/view">View all Requests</a>
+          </button>
+        </ul>
+      </nav>
+      <!-- Dashboard NAV - END-->
 
-    <div class="view-all"><ul class="view-all-wrap" id="view-all-ul"></ul></div>
+      <div class="view-all">
+        <ul class="view-all-wrap" id="view-all-ul"></ul>
+      </div>
+    </div>
 
     <script src="static/js/main.js"></script>
   </body>

@@ -33,59 +33,61 @@
     <script src="/static/js/header.js"></script>
     <!-- Shared Header - END -->
 
-    <!-- Dashboard NAV - Start -->
-    <nav>
-      <ul class="dash-nav">
-        <li class="dash-nav-btn" id="req-build">
-          <a href="/request">Request App Build</a>
-        </li>
-        <li class="dash-nav-btn" id="view-requests">
-          <a href="/view">View all Requests</a>
-        </li>
-      </ul>
-    </nav>
-    <!-- Dashboard NAV - END-->
-    <!-- <div id="dashboard"></div> -->
+    <div class="container center">
+      <!-- Dashboard NAV - Start -->
+      <nav>
+        <ul class="dash-nav">
+          <li class="dash-nav-btn" id="req-build">
+            <a href="/request">Request App Build</a>
+          </li>
+          <li class="dash-nav-btn" id="view-requests">
+            <a href="/view">View all Requests</a>
+          </li>
+        </ul>
+      </nav>
+      <!-- Dashboard NAV - END-->
+      <!-- <div id="dashboard"></div> -->
 
-    <!-- Request Build - START -->
-    <div class="form" id="req-build-form">
-      <div class="form-wrapper">
-        <input
-          type="text"
-          name="name"
-          id="req-build-name"
-          value=""
-          placeholder="Enter app name"
-          autofocus
-          required
-        />
+      <!-- Request Build - START -->
+      <div class="form" id="req-build-form">
+        <div class="form-wrapper">
+          <input
+            type="text"
+            name="name"
+            id="req-build-name"
+            value=""
+            placeholder="Enter app name"
+            autofocus
+            required
+          />
 
-        <textarea
-          type="text"
-          name="name"
-          id="req-build-idea"
-          value=""
-          placeholder="Enter app idea"
-          rows="10"
-          required
-        ></textarea>
+          <textarea
+            type="text"
+            name="name"
+            id="req-build-idea"
+            value=""
+            placeholder="Enter app idea"
+            rows="10"
+            required
+          ></textarea>
 
-        <input
-          type="url"
-          name="url"
-          id="req-build-url"
-          value=""
-          placeholder="http://app-image-url.com"
-          pattern="http://.*"
-          required
-        />
+          <input
+            type="url"
+            name="url"
+            id="req-build-url"
+            value=""
+            placeholder="http://app-image-url.com"
+            pattern="http://.*"
+            required
+          />
 
-        <input type="submit" name="add" id="req-build-btn" value="Submit" />
+          <input type="submit" name="add" id="req-build-btn" value="Submit" />
 
-        <div id="from-alert"></div>
+          <div id="from-alert"></div>
+        </div>
       </div>
+      <!-- Request Build - END -->
     </div>
-    <!-- Request Build - END -->
 
     <script src="static/js/main.js"></script>
   </body>

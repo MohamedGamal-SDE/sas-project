@@ -5,4 +5,4 @@
 {"id": 5, "name": "C test", "idea": "C idea test", "url": "http://127.0.0.1"} 
 {"id": 8, "name": "C test", "idea": "C idea test", "url": "http://127.0.0.1"} 
 {"id": 6, "name": "C test", "idea": "C idea test", "url": "http://127.0.0.1"} 
-{"id": 7, "name": "U test", "idea": "U idea test", "url": "http://127.0.0.1"} 
+{"id": 8, "name": "C test", "idea": "C idea test", "url": "http://127.0.0.1"} 

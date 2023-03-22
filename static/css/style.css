@@ -287,12 +287,15 @@ body {
   align-items: center;
 }
 
+.navbar {
+  border-bottom: 2px solid #242424;
+}
+
 .menu {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid #242424;
   padding: 0 0.5rem;
   background-color: transparent;
 }
@@ -303,12 +306,25 @@ body {
 .menu li.cta-btn--top a {
   padding: 0.7rem 1rem;
 }
+@media (min-width: 992px) {
+  .menu {
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+}
 
 .logo {
   font-size: 1.25rem;
   padding: 0.5rem 0.7rem 0.5rem 0;
   flex: 1;
   order: 0;
+}
+@media (min-width: 992px) {
+  .logo {
+    align-self: center;
+  }
 }
 
 .item {
@@ -323,9 +339,26 @@ body {
   width: auto;
   display: block;
 }
+@media (min-width: 992px) {
+  .item.cta-btn--top {
+    order: 2;
+    margin-left: 1rem;
+  }
+}
 .item:not(.cta-btn--top) a:hover,
 .item .item a:hover::after {
   color: #d0d1d3;
+}
+@media (min-width: 992px) {
+  .item {
+    order: 1;
+    display: block;
+    width: auto;
+  }
+  .item:not(.cta-btn--top) {
+    padding: 0;
+    align-self: center;
+  }
 }
 
 .active .item {
@@ -361,6 +394,11 @@ body {
   text-align: right;
   font-size: 1.5rem;
 }
+@media (min-width: 992px) {
+  .toggle {
+    display: none;
+  }
+}
 
 .hero-section {
   display: flex;
@@ -372,7 +410,6 @@ body {
 }
 .hero-section-img img {
   max-width: 100%;
-  border-radius: 1rem;
 }
 @media (min-width: 992px) {
   .hero-section-img {
@@ -426,12 +463,12 @@ body {
 }
 
 .form {
-  max-width: 80%;
+  max-width: 90%;
   margin: 2rem auto 0;
 }
 @media (min-width: 992px) {
   .form {
-    max-width: 60%;
+    max-width: 80%;
   }
 }
 .form-wrapper {

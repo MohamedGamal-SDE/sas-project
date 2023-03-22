@@ -8,7 +8,7 @@ const headerJSContent = `
 
 <header>
   <!-- Navbar- START-->
-  <nav>
+  <nav class="navbar">
     <ul class="menu">
       <!-- Logo -->
       <li class="logo">
