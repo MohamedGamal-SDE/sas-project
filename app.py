@@ -40,6 +40,7 @@ def get_js_general():
     get_javascript("main")
     get_javascript("header")
     get_javascript("hero")
+    get_javascript("dash-nav")
 
 # ===================================== #
 # # Main Routes

@@ -2,6 +2,7 @@
 // Global Setup
 // ============================================= //
 const baseURL = window.location.origin;
+const currentLocation = window.location.pathname;
 // `http://127.0.0.1:5000/api/v1`
 const baseApiURL = `${baseURL}/api/v1`;
 
@@ -9,7 +10,7 @@ const baseApiURL = `${baseURL}/api/v1`;
 // LogIn Page Setup
 // ============================================= //
 
-if (!loggedIn && window.location.pathname === '/login') {
+if (!loggedIn && currentLocation === '/login') {
   // General Setup
   const username = document.getElementById('username');
   const password = document.getElementById('password');
@@ -58,3 +59,44 @@ if (!loggedIn && window.location.pathname === '/login') {
 
   sendBtn.addEventListener('click', setLogin);
 }
+
+// ============================================= //
+// Dashboard Section Setup
+// ============================================= //
+// // ==== General Dashboard Setup ====
+const reqBuild = document.getElementById('req-build');
+const viewRequests = document.getElementById('view-requests');
+
+const isDashboard = () => {
+  if (
+    currentLocation === '/dashboard' ||
+    currentLocation === '/request' ||
+    currentLocation === '/view'
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+// // Request Build References and general setup
+const reqForm = document.getElementById('req-build-form');
+const reqName = document.getElementById('req-build-name');
+const reqIdea = document.getElementById('req-build-idea');
+const reqURL = document.getElementById('req-build-url');
+const reqBtn = document.getElementById('req-build-btn');
+const reqAlert = document.getElementById('from-alert');
+let curState = {
+  appName: '',
+  appIdea: '',
+  appURL: '',
+  appMsg: '',
+};
+
+class Records {
+  constructor() {
+    this.list = [];
+  }
+}
+
+let requests = new Records();
