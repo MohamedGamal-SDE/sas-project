@@ -1,9 +1,11 @@
 # Initial Setup
 import json
 from flask import Flask, jsonify, request, abort, make_response
+from flask_cors import CORS
 
 app = Flask(__name__)
-db_path = 'db/db.txt'
+CORS(app)
+db_path = 'static/db/db.txt'
 
 
 # App route Setup:
@@ -109,7 +111,7 @@ def build_record(id, name, idea, url):
 
 
 # ## Create Record (Handle POST request)
-@app.route('/api/v1/', methods=['POST'])
+@app.route('/api/v1', methods=['POST'])
 def create_record():
     # Check guard : JSON data only (or)
     # If Incoming request not including "id" which means its invalid or empty
@@ -175,12 +177,10 @@ def read_records():
         return []
 
 
-@app.route('/api/v1/', methods=["GET"])
+@app.route('/api/v1', methods=["GET"])
 def get_all():
-    is_json()
-
     records = read_records()
-    return jsonify({"data": records})
+    return jsonify({"result": records})
 
 
 # ------------------------------------- #
@@ -188,8 +188,6 @@ def get_all():
 # ------------------------------------- #
 @app.route('/api/v1/<int:incoming_id>', methods=["GET"])
 def get_one(incoming_id):
-    # Check guard : JSON data only
-    is_json()
 
     records = read_records()
     target = []
@@ -201,7 +199,7 @@ def get_one(incoming_id):
     # Check guard : no match found (404)
     target_not_found(target)
 
-    return jsonify({"data": target[0], "message": "Found!", "success": True})
+    return jsonify({"result": target[0], "message": "Found!", "success": True})
 
 
 # ===================================== #
@@ -216,7 +214,7 @@ def rebuild_records(new_record):
 @app.route('/api/v1/<int:incoming_id>', methods=['PUT'])
 def update_record(incoming_id):
     # Check guard : JSON data only
-    is_json()
+    # is_json()
 
     records = read_records()
     new_records = []
@@ -250,7 +248,7 @@ def update_record(incoming_id):
 @app.route('/api/v1/<int:incoming_id>', methods=["DELETE"])
 def del_record(incoming_id):
     # Check guard : JSON data only
-    is_json()
+    # is_json()
 
     records = read_records()
     target = []
