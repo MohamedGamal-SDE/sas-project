@@ -127,3 +127,39 @@ def update_record(incoming_id):
             rebuild_records(record)
 
     return jsonify({"message": "Updated!", "success": True})
+
+
+# ===================================== #
+# # DELETE record (DELETE) functionality:
+# ===================================== #
+@app.route('/<int:incoming_id>', methods=["DELETE"])
+def del_record(incoming_id):
+    # Check guard : JSON data only
+    if not request.json:
+        abort(400)
+
+    records = read_records()
+    removed_target = []
+
+    for record in records:
+        if record["id"] == incoming_id:
+            removed_target.append(record)
+            records.remove(record)
+
+    # Check guard : no match found (404)
+    if len(removed_target) == 0:
+        abort(404)
+
+    # Make copy of records list to ReBuild new_records
+    new_records = records
+
+    # Clear old_records and add new_records
+    with open(db_path, "w"):
+        for record in new_records:
+            rebuild_records(record)
+
+    return jsonify({"message": "Removed!", "success": True})
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
