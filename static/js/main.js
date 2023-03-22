@@ -79,29 +79,18 @@ const isDashboard = () => {
   }
 };
 
+// ============================================= //
+//  View and fetch Requests (GET) Setup
+// ============================================= //
+
 //  // View Requests References and general setup
 const viewAllUl = document.getElementById('view-all-ul');
 
-// // Request Build References and general setup
-const reqForm = document.getElementById('req-build-form');
-const reqName = document.getElementById('req-build-name');
-const reqIdea = document.getElementById('req-build-idea');
-const reqURL = document.getElementById('req-build-url');
-const reqBtn = document.getElementById('req-build-btn');
-const reqAlert = document.getElementById('from-alert');
-let curState = {
-  appName: '',
-  appIdea: '',
-  appURL: '',
-  appMsg: '',
-};
-
+// === Requests List factory (Class) ===
 class Records {
   constructor() {
     // this.list = this.buildRecords() || [];
     this.list = [];
-    console.log('fetching....');
-    // this.buildRecords();
   }
 
   // Check if method is used as event or no,
@@ -143,6 +132,7 @@ class Records {
   }
 }
 
+// ---------------------------------------------- //
 // View all Requests onClick Action functionality
 async function viewAll(event) {
   // Get requests list from API
@@ -157,3 +147,81 @@ async function viewAll(event) {
 }
 
 viewRequests.addEventListener('click', viewAll, { once: true });
+
+// ============================================= //
+//  Request Build (POST) Setup
+// ============================================= //
+
+// // Request Build References and general setup
+const reqForm = document.getElementById('req-build-form');
+const reqName = document.getElementById('req-build-name');
+const reqIdea = document.getElementById('req-build-idea');
+const reqURL = document.getElementById('req-build-url');
+const reqBtn = document.getElementById('req-build-btn');
+const reqAlert = document.getElementById('from-alert');
+let appMsg = '';
+function resetForm() {
+  reqName.value = '';
+  reqIdea.value = '';
+  reqURL.value = '';
+}
+
+// === Request factory (Class) ===
+class Record extends Records {
+  constructor(name, idea, url) {
+    super();
+    this.name = name;
+    this.idea = idea;
+    this.url = url;
+  }
+
+  // Unique Random ID generator Utils
+  uniqueId() {
+    return (
+      Date.now().toString(36) +
+      Math.floor(
+        Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)
+      ).toString(36)
+    );
+  }
+
+  buildRecord() {
+    let record = {
+      id: this.uniqueId(),
+      name: this.name,
+      idea: this.idea,
+      url: this.url,
+    };
+    return record;
+  }
+
+  // Create (POST) Record fetch functionality
+  async createRecord(event) {
+    this.isEvent();
+
+    let newRecord = this.buildRecord();
+
+    let config = {
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    };
+
+    try {
+      await axios.post(baseApiURL, JSON.stringify(newRecord), config);
+    } catch (error) {
+      // === DEV-ONLY ===
+      console.log('Error...', error);
+    }
+  }
+}
+
+async function handleCreateRequest(event) {
+  event.preventDefault();
+
+  let request = new Record(reqName.value, reqIdea.value, reqURL.value);
+  request.createRecord();
+  resetForm();
+}
+
+reqForm.addEventListener('submit', handleCreateRequest);
