@@ -33,44 +33,57 @@
     <script src="/static/js/header.js"></script>
     <!-- Shared Header - END -->
 
-    <div class="container center">
-      <!-- LogIn Auth Form - Start -->
-      <form class="form">
-        <div class="form-wrapper">
-          <input
-            type="text"
-            name="username"
-            id="username"
-            value=""
-            placeholder="Enter Username"
-            autofocus
-            required
-          />
+    <div class="error-block">
+      <div class="container center dash-full">
+        <!-- LogIn Auth Form - Start -->
+        <form class="form">
+          <div class="form-wrapper">
+            <input
+              type="text"
+              name="username"
+              id="username"
+              value=""
+              placeholder="Enter Username"
+              autofocus
+              required
+            />
 
-          <input
-            type="password"
-            name="password"
-            id="password"
-            class="form-input"
-            value=""
-            placeholder="Enter Password"
-            required
-          />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              class="form-input"
+              value=""
+              placeholder="Enter Password"
+              required
+            />
 
-          <input type="submit" name="send" id="send" value="Log In" />
-          <div class="form-hint"></div>
+            <input type="submit" name="send" id="send" value="Log In" />
+            <div class="form-hint"></div>
 
-          <div id="from-notify"></div>
+            <div id="from-notify"></div>
 
-          <div class="form-hint">
-            <div>Not so secret HINT:</div>
-            <div>User: demo</div>
-            <div>Password: 1234</div>
+            <div class="form-hint">
+              <div>Not so secret HINT:</div>
+              <div>User: demo</div>
+              <div>Password: FakePass032023</div>
+            </div>
           </div>
-        </div>
-      </form>
-      <!-- LogIn Auth Form - END -->
+        </form>
+        <!-- LogIn Auth Form - END -->
+      </div>
     </div>
+
+    <!-- Footer - START -->
+    <footer class="footer">
+      <div class="footer-copyrights">&#169; Simple App Studio (SAS).</div>
+      <div class="footer-social">
+        <i class="fa-brands fa-github"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-discord"></i>
+      </div>
+    </footer>
+    <!-- Footer - END -->
 
     <script src="static/js/main.js"></script>
     <script src="static/js/script-login.js"></script>

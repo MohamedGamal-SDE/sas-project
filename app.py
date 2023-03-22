@@ -41,6 +41,7 @@ def get_js_general():
     get_javascript("hero")
     get_javascript("dash-nav")
     get_javascript("view-item")
+    get_javascript("last-cta")
 
     get_javascript("main")
     get_javascript("script-dash-general")
