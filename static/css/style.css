@@ -765,4 +765,51 @@ body {
 }
 .services-card:not(:last-child) {
   margin-bottom: 1.25rem;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+@media (min-width: 992px) {
+  .stats {
+    flex-wrap: nowrap;
+  }
+}
+.stats-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #4169e1;
+  box-shadow: 0 0.25rem 1.25rem rgba(18, 18, 18, 0.2);
+  border-radius: 0.5rem;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+@media (min-width: 768px) {
+  .stats-item {
+    margin: 0 1rem;
+  }
+}
+.stats-item:hover {
+  transform: translateY(-0.4rem);
+  box-shadow: 0 0.5rem 1.8rem rgba(65, 105, 225, 0.4);
+}
+.stats-item-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.stats-item-label {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  font-weight: bold;
 }/*# sourceMappingURL=style.css.map */

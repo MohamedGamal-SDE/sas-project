@@ -1,0 +1,53 @@
+@use 'variables' as v;
+
+// ====== Statistics Block ======
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  padding: 1rem;
+  margin-top: 1rem;
+
+  @media (min-width: v.$large) {
+    flex-wrap: nowrap;
+  }
+
+  // Stats mini card
+  &-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: v.$blu;
+    box-shadow: 0 0.25rem 1.25rem rgba(v.$bgMain, 0.2);
+    border-radius: 0.5rem;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+
+    @media (min-width: v.$med) {
+      margin: 0 1rem;
+    }
+
+    &:hover {
+      transform: translateY(-0.4rem);
+      box-shadow: 0 0.5rem 1.8rem rgba(v.$blu, 0.4);
+    }
+
+    // Mini card Content
+    &-value {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    &-label {
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+  }
+}
