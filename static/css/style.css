@@ -427,12 +427,26 @@ body {
   color: #fff;
 }
 .hero-section-content--text {
+  display: flex;
+  flex-direction: column;
   padding: 1rem;
+  gap: 1rem;
 }
-.hero-section-content--text h1 {
-  font-size: 3rem;
+.hero-section-content--text .h1 {
+  font-size: 4rem;
+  font-weight: 700;
 }
-.hero-section-content--text p {
+.hero-section-content--text .h2 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+@media (min-width: 768px) {
+  .hero-section-content--text .h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+}
+.hero-section-content--text .p {
   font-size: 1.25rem;
   color: #d0d1d3;
 }
@@ -675,4 +689,80 @@ body {
 .content-editable {
   color: #fff;
   border-bottom: 2px dashed #fff200;
+}
+
+.ww-do {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 3rem;
+}
+.ww-do-h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fecd48;
+}
+.ww-do-p {
+  font-size: 1.25rem;
+  color: #d0d1d3;
+}
+
+.services-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+@media (min-width: 992px) {
+  .services-container {
+    flex-direction: row;
+  }
+}
+.services-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 1rem 2rem rgba(18, 18, 18, 0.2);
+  background-color: white;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+.services-card:hover {
+  transform: translateY(-1rem);
+  box-shadow: 0 2rem 4rem rgba(254, 205, 72, 0.2);
+}
+.services-card h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.25rem;
+  color: #121212;
+}
+.services-card p {
+  font-size: 1.125rem;
+  margin-bottom: 1.875rem;
+  color: #121212;
+}
+.services-card button {
+  padding: 0.625rem 1.25rem;
+  border: none;
+  border-radius: 3.125rem;
+  background-color: #fecd48;
+  color: #121212;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.services-card button:hover {
+  background-color: royalblue;
+  color: white;
+}
+.services-card:not(:last-child) {
+  margin-bottom: 1.25rem;
 }/*# sourceMappingURL=style.css.map */

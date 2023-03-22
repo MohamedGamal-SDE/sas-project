@@ -31,13 +31,27 @@
     color: v.$wit;
 
     &--text {
+      display: flex;
+      flex-direction: column;
       padding: 1rem;
+      gap: 1rem;
 
-      h1 {
-        font-size: 3rem;
+      .h1 {
+        font-size: 4rem;
+        font-weight: 700;
       }
 
-      p {
+      .h2 {
+        font-size: 2rem;
+        font-weight: 500;
+
+        @media (min-width: v.$med) {
+          font-size: 2.5rem;
+          font-weight: 600;
+        }
+      }
+
+      .p {
         font-size: 1.25rem;
         color: v.$bgGray;
       }

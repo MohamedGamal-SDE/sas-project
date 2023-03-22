@@ -1,0 +1,97 @@
+@use 'variables' as v;
+// @use 'helpers' as h;
+
+// ====== Services Block ======
+// What WE Do Section
+.ww-do {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 3rem;
+
+  &-h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: v.$ylw_d;
+    //   @media (min-width: v.$med) {
+    //     font-size:4rem;
+    //     font-weight: 700;
+    //   }
+  }
+
+  &-p {
+    font-size: 1.25rem;
+    color: v.$bgGray;
+  }
+}
+
+// Services Section
+.services {
+  &-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+
+    @media (min-width: v.$large) {
+      flex-direction: row;
+    }
+  }
+
+  // Card Main - Start
+  &-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 1rem 2rem rgba(v.$bgMain, 0.2);
+    background-color: rgba(v.$wit, 1);
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: translateY(-1rem);
+      box-shadow: 0 2rem 4rem rgba(v.$ylw_d, 0.2);
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1.25rem;
+      color: rgba(v.$bgMain, 1);
+    }
+
+    p {
+      font-size: 1.125rem;
+      margin-bottom: 1.875rem;
+      color: rgba(v.$bgMain, 1);
+    }
+
+    // Card - CTA Btn
+    button {
+      padding: 0.625rem 1.25rem;
+      border: none;
+      border-radius: 3.125rem;
+      background-color: rgba(v.$ylw_d, 1);
+      color: rgba(v.$bgMain, 1);
+      font-size: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba(v.$blu, 1);
+        color: rgba(v.$wit, 1);
+      }
+    }
+    // Add margin to the bottom of each card except for last one
+    &:not(:last-child) {
+      margin-bottom: 1.25rem;
+    }
+  } // Card main - (end)
+}
