@@ -6,11 +6,11 @@ const currentLocation = window.location.pathname;
 // `http://127.0.0.1:5000/api/v1`
 const baseApiURL = `${baseURL}/api/v1`;
 
-function delayReset(el) {
+function delayReset(el, timer = 2000) {
   setTimeout(() => {
-    // Reset Form Msg After 2 sec
+    // Reset Form Msg After some time
     el.innerHTML = '';
-  }, 2000);
+  }, timer);
 }
 
 // Error Block
