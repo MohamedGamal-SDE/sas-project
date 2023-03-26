@@ -1,5 +1,4 @@
 @use 'variables' as v;
-@use 'helpers' as h;
 
 // Additional browsers style reset
 html {
@@ -45,7 +44,7 @@ a {
   color: v.$wit;
 }
 
-// MAin App Background
+// Main App Background
 body {
   min-height: 100vh;
   background: linear-gradient(
@@ -62,8 +61,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // flex-grow: 1;
-    // min-height: 15rem;}
   }
 }
 // Top Colored line
