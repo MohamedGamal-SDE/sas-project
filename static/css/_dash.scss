@@ -23,26 +23,33 @@
   }
 }
 
-// Loader Spinner
+// Loader Spinner with full screen dimmer
 #loader {
-  border: 12px solid v.$ylw;
-  border-radius: 50%;
-  border-top: 12px solid v.$wit;
-  width: 70px;
-  height: 70px;
-  animation: spin 1s linear infinite;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(v.$bgMain, 0.8);
+  z-index: 88;
 
-  &-center {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+  .loader-spinner {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    border: 0.8rem solid v.$orange;
+    border-top-color: v.$wit;
+    animation: spin 1.2s linear infinite;
   }
 }
 
 @keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
   100% {
     transform: rotate(360deg);
   }
@@ -136,6 +143,10 @@
       font-size: 1.125rem;
       gap: 0.25rem;
       color: v.$bgGray;
+
+      & i:hover {
+        color: v.$ylw_d;
+      }
     }
 
     &--btn {

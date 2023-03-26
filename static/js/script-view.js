@@ -1,28 +1,31 @@
 //  // View Requests References and general setup
 const viewAllGrid = document.getElementById('view-all-grid');
 
+// Preload Requests List
 async function preLoad() {
   const requests = new Records();
   await requests.buildRecords();
-
-  // localStorage List
-  const storedList = JSON.parse(localStorage.getItem('records'));
-
-  return storedList;
+  return requests.list;
 }
 preLoad();
 
 // ---------------------------------------------- //
 // View all Requests onClick Action functionality
 function viewAll(list) {
-  // List-View builder
-  list.map((request) => {
+  // Clear any previous content
+  viewAllGrid.innerHTML = '';
+
+  // List-View builder - Showing new requests first
+  for (let i = list.length - 1; i >= 0; i--) {
+    const request = list[i];
     viewAllGrid.innerHTML += addListItem(request);
-  });
+  }
 }
 
 window.addEventListener('load', async () => {
+  showLoader();
   const requestsList = await preLoad();
+  hideLoader();
   viewAll(requestsList);
 });
 
@@ -49,6 +52,7 @@ function handleUpdateRequest(event) {
   nameRef.focus();
 }
 
+// Save Edits
 function handleSaveRequest(event) {
   event.preventDefault();
 
@@ -90,6 +94,7 @@ function handleSaveRequest(event) {
   saveAlert.innerText = '';
 }
 
+// Delete Request
 async function handleDeleteRequest(event) {
   event.preventDefault();
 
@@ -100,6 +105,7 @@ async function handleDeleteRequest(event) {
   await target.deleteRecord(targetId);
 
   // Redirect to Dashboard
+  showLoader();
   window.location = `${baseURL}/view`;
 }
 

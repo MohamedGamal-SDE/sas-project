@@ -582,23 +582,30 @@ body {
 }
 
 #loader {
-  border: 12px solid #fff200;
-  border-radius: 50%;
-  border-top: 12px solid #fff;
-  width: 70px;
-  height: 70px;
-  animation: spin 1s linear infinite;
-}
-#loader-center {
-  position: absolute;
+  position: fixed;
   top: 0;
-  bottom: 0;
   left: 0;
   right: 0;
-  margin: auto;
+  bottom: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(18, 18, 18, 0.8);
+  z-index: 88;
+}
+#loader .loader-spinner {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  border: 0.8rem solid #fe5945;
+  border-top-color: #fff;
+  animation: spin 1.2s linear infinite;
 }
 
 @keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
   100% {
     transform: rotate(360deg);
   }
@@ -683,6 +690,9 @@ body {
   font-size: 1.125rem;
   gap: 0.25rem;
   color: #d0d1d3;
+}
+.card-footer--icons i:hover {
+  color: #fecd48;
 }
 .card-footer--btn {
   display: flex;
