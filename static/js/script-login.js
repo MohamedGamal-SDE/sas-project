@@ -38,8 +38,8 @@ if (!loggedIn && currentLocation === '/login') {
         localStorage.setItem('username', currentUser);
         localStorage.setItem('password', currentPass);
 
-        // Redirect to Dashboard
-        window.location = `${baseURL}/dashboard`;
+        // Redirect to Add New Request
+        window.location = `${baseURL}/request`;
       } else {
         username.value = '';
         password.value = '';
