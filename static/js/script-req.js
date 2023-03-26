@@ -9,24 +9,33 @@ const reqIdea = document.getElementById('req-build-idea');
 const reqURL = document.getElementById('req-build-url');
 const reqBtn = document.getElementById('req-build-btn');
 const reqAlert = document.getElementById('from-alert');
-let appMsg = '<div class="form-msg">Request Success</div>';
+let successMsg = '<div class="form-msg">Request Success</div>';
+let invalidMsg = '<div class="form-msg">Invalid Entry</div>';
+
+function resetForm() {
+  reqName.value = '';
+  reqIdea.value = '';
+  reqURL.value = '';
+}
 
 async function handleCreateRequest(event) {
   event.preventDefault();
 
-  let request = new Record(reqName.value, reqIdea.value, reqURL.value);
-  request.createRecord();
+  // Check For whitespace Entry
+  if (reqName.value.trim() === '' || reqIdea.value.trim() === '') {
+    reqAlert.innerHTML = invalidMsg;
+    delayReset(reqAlert, 800);
+  } else {
+    let request = new Record(reqName.value, reqIdea.value, reqURL.value);
+    request.createRecord();
 
-  // Notify user of Request Success
-  reqAlert.innerHTML = appMsg;
+    // Notify user of Request Success
+    reqAlert.innerHTML = successMsg;
+    delayReset(reqAlert);
+  }
 
   // Rest Form Stats
   resetForm();
-
-  setTimeout(() => {
-    // Reset Form Msg After 2 sec
-    reqAlert.innerHTML = '';
-  }, 2000);
 }
 
 reqForm.addEventListener('submit', handleCreateRequest);
