@@ -1,22 +1,29 @@
 //  // View Requests References and general setup
 const viewAllGrid = document.getElementById('view-all-grid');
 
-const requests = new Records();
+async function preLoad() {
+  const requests = new Records();
+  await requests.buildRecords();
 
-// localStorage List
-const storedList = JSON.parse(localStorage.getItem('records'));
+  // localStorage List
+  const storedList = JSON.parse(localStorage.getItem('records'));
+
+  return storedList;
+}
+preLoad();
 
 // ---------------------------------------------- //
 // View all Requests onClick Action functionality
-function viewAll(event) {
-  // Initial List-View builder
-  storedList.map((request) => {
+function viewAll(list) {
+  // List-View builder
+  list.map((request) => {
     viewAllGrid.innerHTML += addListItem(request);
   });
 }
 
-window.addEventListener('load', () => {
-  viewAll();
+window.addEventListener('load', async () => {
+  const requestsList = await preLoad();
+  viewAll(requestsList);
 });
 
 // Update Request handler
@@ -87,8 +94,6 @@ async function handleDeleteRequest(event) {
   event.preventDefault();
 
   const targetId = event.target.getAttribute('data-id');
-
-  // storedList.filter((rec) => rec.id !== targetId);
 
   // Call new Record - delete method
   const target = new Record();

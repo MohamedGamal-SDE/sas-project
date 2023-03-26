@@ -25,7 +25,6 @@ const isDashboard = () => {
 class Records {
   constructor() {
     this.list = [];
-    this.buildRecords();
   }
 
   // Check if method is used as event or no,
