@@ -15,40 +15,18 @@ db_path = 'static/db/db.txt'
 
 
 def get_html(page_name):
-    html_file = open(page_name + '.html')
-    content = html_file.read()
-    html_file.close()
+    """
+    This function used to read HTML files
+
+    Parameters:
+    page_name (string) : html file name
+
+    Returns:
+    HTML files content
+    """
+    with open(page_name + '.html', 'r') as html_file:
+        content = html_file.read()
     return content
-
-
-def get_css(file_name):
-    css_file = open('static/css/' + file_name + '.css')
-    content = css_file.read()
-    css_file.close()
-    return content
-
-
-def get_javascript(file_name):
-    js_file = open('static/js/' + file_name + '.js')
-    content = js_file.read()
-    js_file.close()
-    return content
-
-
-# ## Helper function to fetch javascript files
-def get_js_general():
-    get_javascript("header")
-    get_javascript("hero")
-    get_javascript("dash-nav")
-    get_javascript("view-item")
-    get_javascript("last-cta")
-
-    get_javascript("main")
-    get_javascript("script-dash-general")
-    get_javascript("script-login")
-    get_javascript("script-req")
-    get_javascript("script-view")
-
 
 # ===================================== #
 # # Main Routes
@@ -58,45 +36,30 @@ def get_js_general():
 @app.route('/')
 def home_route():
     html = get_html("index")
-    get_css("style")
-    get_js_general()
-
     return html
 
 
 @app.route('/dashboard')
 def dashboard_route():
     html = get_html("dashboard")
-    get_css("style")
-    get_js_general()
-
     return html
 
 
 @app.route('/login')
 def login_route():
     html = get_html("login")
-    get_css("style")
-    get_js_general()
-
     return html
 
 
 @app.route('/request')
 def request_route():
     html = get_html("request")
-    get_css("style")
-    get_js_general()
-
     return html
 
 
 @app.route('/view')
 def view_route():
     html = get_html("view")
-    get_css("style")
-    get_js_general()
-
     return html
 
 # 404 Client Edition
@@ -105,26 +68,30 @@ def view_route():
 @app.errorhandler(404)
 def not_found(e):
     html = get_html("404")
-    get_css("style")
-    get_js_general()
-
     return html
 
 # API setup:
 # ===================================== #
 # # Create (POST) Functionality:
-# ## Record-Builder helper function
 # ===================================== #
 
 
 def build_record(id, name, idea, url):
+    """
+    Record-Builder helper function
+    - Accept incoming record data and build record object
+    - Add new record to db file and create the file if not exist
+
+    Parameters:
+    id, name, idea, url (string) : record inputs
+    """
     record = {
         "id": id,
         "name": name,
         "idea": idea,
         "url": url,
     }
-    # Add new record to db file and create the file if not exist
+
     with open(db_path, "a+") as db_file:
         db_file.write(f"{json.dumps(record)} \n")
 
@@ -132,13 +99,19 @@ def build_record(id, name, idea, url):
 # ## Create Record (Handle POST request)
 @app.route('/api/v1', methods=['POST'])
 def create_record():
-    # Check guard : JSON data only (or)
-    # If Incoming request not including "id" which means its invalid or empty
-    # Cancel request and send BAD request error
-    if not request.json or not "id" in request.json:
+    """
+    Create Record (Handle POST request) function
+    - Check for JSON data only and If Incoming request not including "id" which means its invalid or empty
+    - Cancel request and send BAD request error
+    - If check passed it build new record from incoming data
+
+    Returns:
+    JSON response with success confirmation
+    """
+
+    if not request.is_json or not "id" in request.json:
         abort(400)
 
-    # Build record
     r_id = request.json["id"]
     r_name = request.json["name"]
     r_idea = request.json["idea"]
@@ -152,14 +125,8 @@ def create_record():
 # ===================================== #
 # ## Handle Record NOT found as JSON
 #    not as default flask HTML response
+#    For server responses options
 # ===================================== #
-
-def is_json():
-    # Check guard : JSON data only
-    # Cancel request and send BAD request error
-    if not request.json:
-        abort(400)
-
 
 def target_not_found(target):
     # Check guard : not found (404)
@@ -168,11 +135,6 @@ def target_not_found(target):
         abort(404)
 
 
-# 404 Server Edition
-# @app.errorhandler(404)
-# def not_found(e):
-#     return make_response(jsonify({"message": "Not found", "success": False}), 404)
-
 @app.errorhandler(400)
 def bad_request(e):
     return make_response(jsonify({"message": "Bad Request!", "success": False}), 400)
@@ -180,10 +142,16 @@ def bad_request(e):
 
 # ===================================== #
 # Read (Get) Functionality:
-# ## Read-All Records helper function
 # ===================================== #
 def read_records():
-    # Check guard : for potential file not exist
+    """
+    Read-All Records helper function
+    - Check for potential file not exist
+
+    Returns:
+    Records list or []
+    """
+
     try:
         records = []
         with open(db_path, "r") as db_list:
@@ -198,6 +166,14 @@ def read_records():
 
 @app.route('/api/v1', methods=["GET"])
 def get_all():
+    """
+    Read (Get) Functionality
+    - Read-All Records
+
+    Returns:
+    JSON response with the records list
+    """
+
     records = read_records()
     return jsonify({"result": records})
 
@@ -207,6 +183,19 @@ def get_all():
 # ------------------------------------- #
 @app.route('/api/v1/<incoming_id>', methods=["GET"])
 def get_one(incoming_id):
+    """
+    Read (Get) Functionality
+    - Read-All Records
+    - Check for target record
+
+    Parameters:
+    incoming_id (string): Id of the desired record
+
+    Returns:
+    JSON response with target record and confirmation
+    or
+    Generate 404 if no match found
+    """
 
     records = read_records()
     target = []
@@ -215,7 +204,6 @@ def get_one(incoming_id):
         if record["id"] == incoming_id:
             target.append(record)
 
-    # Check guard : no match found (404)
     target_not_found(target)
 
     return jsonify({"result": target[0], "message": "Found!", "success": True})
@@ -223,18 +211,36 @@ def get_one(incoming_id):
 
 # ===================================== #
 # # Update record (PUT) functionality:
-# ## Add Update DB file helper function
 # ===================================== #
 def rebuild_records(new_record):
+    """
+    ReBuild New Records DB
+
+    Parameters:
+    new_record (dictionary): New record to be added to DB
+    """
     with open(db_path, "a+") as db_file:
         db_file.write(f"{json.dumps(new_record)} \n")
 
 
 @app.route('/api/v1/<incoming_id>', methods=['PUT'])
 def update_record(incoming_id):
-    # Check guard : JSON data only
-    # is_json()
+    """
+    Update record (PUT) functionality
+    - Read Records
+    - Look for target record and rebuild it if found match
+    - Save updated record
+    - ReBuild new_records list
+    - Clear old_records and add new_records
 
+    Parameters:
+    incoming_id (string): Id of the desired record
+
+    Returns:
+    JSON response with success confirmation
+    or
+    Generate 404 if no match found
+    """
     records = read_records()
     new_records = []
     target = []
@@ -266,9 +272,22 @@ def update_record(incoming_id):
 # ===================================== #
 @app.route('/api/v1/<incoming_id>', methods=["DELETE"])
 def del_record(incoming_id):
-    # Check guard : JSON data only
-    # is_json()
+    """
+    DELETE record (DELETE) functionality:
+    - Read Records
+    - Look for target record and delete it if found match
+    - Save target record to be available if need to be send in the response later
+    - Make copy of records list to ReBuild new_records
+    - Clear old_records and add new_records
 
+    Parameters:
+    incoming_id (string): Id of the desired record
+
+    Returns:
+    JSON response with success confirmation
+    or
+    Generate 404 if no match found
+    """
     records = read_records()
     target = []
 
